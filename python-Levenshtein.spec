@@ -4,7 +4,7 @@ Summary:	Python extension computing string distances and similarities
 Name:		python-%{pname}
 Version:	0.10
 Release:	0.1
-License:	LGPL
+License:	GPL
 Group:		Libraries/Python
 Source0:	http://trific.ath.cx/Ftp//python/levenshtein/python-Levenshtein-0.10.tar.bz2
 # Source0-md5:	88d39338fc75090da78adf43785c71b4
