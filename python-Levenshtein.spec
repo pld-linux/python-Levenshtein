@@ -1,6 +1,6 @@
 %define		pname Levenshtein
 Summary:	Python extension computing string distances and similarities
-Summary(pl):	Rozszerzenie Pythona do obliczania odleg≥o∂ci i podobieÒstw ≥aÒcuchÛw
+Summary(pl.UTF-8):   Rozszerzenie Pythona do obliczania odleg≈Ço≈õci i podobie≈Ñstw ≈Ça≈Ñcuch√≥w
 Name:		python-%{pname}
 Version:	0.10
 Release:	0.1
@@ -19,11 +19,11 @@ generalized medians and set medians of Strings and Unicodes. Becuase
 it's implemented in C, it's much faster than corresponding Python
 library functions and methods.
 
-%description -l pl
-Levenshtein oblicza odleg≥o∂ci Levenshteina, wspÛ≥czynniki
-podobieÒstwa, uogÛlnione mediany i mediany zbiorÛw dla warto∂ci String
-i Unicode. Poniewaø jest zaimplementowany w C, jest duøo szybszy od
-odpowiadaj±cych mu funkcji bibliotecznych i metod Pythona.
+%description -l pl.UTF-8
+Levenshtein oblicza odleg≈Ço≈õci Levenshteina, wsp√≥≈Çczynniki
+podobie≈Ñstwa, uog√≥lnione mediany i mediany zbior√≥w dla warto≈õci String
+i Unicode. Poniewa≈º jest zaimplementowany w C, jest du≈ºo szybszy od
+odpowiadajƒÖcych mu funkcji bibliotecznych i metod Pythona.
 
 %prep
 %setup -q
