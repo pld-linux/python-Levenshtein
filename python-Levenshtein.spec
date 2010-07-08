@@ -3,7 +3,7 @@ Summary:	Python extension computing string distances and similarities
 Summary(pl.UTF-8):	Rozszerzenie Pythona do obliczania odległości i podobieństw łańcuchów
 Name:		python-%{pname}
 Version:	0.10
-Release:	1
+Release:	2
 License:	GPL
 Group:		Libraries/Python
 Source0:	http://trific.ath.cx/Ftp//python/levenshtein/python-Levenshtein-%{version}.tar.bz2
