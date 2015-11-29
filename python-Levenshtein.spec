@@ -9,6 +9,7 @@ Group:		Libraries/Python
 Source0:	http://trific.ath.cx/Ftp//python/levenshtein/python-Levenshtein-%{version}.tar.bz2
 # Source0-md5:	88d39338fc75090da78adf43785c71b4
 URL:		http://trific.ath.cx/resources/python/levenshtein/
+BuildRequires:	rpmbuild(macros) >= 1.710
 BuildRequires:	python-devel >= 1:2.3.0
 BuildRequires:	python-modules
 BuildRequires:	rpm-pythonprov
