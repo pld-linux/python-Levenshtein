@@ -1,19 +1,20 @@
-%define		pname Levenshtein
+%define 	module		Levenshtein
+%define 	egg_name	python_Levenshtein
+%define		pypi_name	python-Levenshtein
 Summary:	Python extension computing string distances and similarities
 Summary(pl.UTF-8):	Rozszerzenie Pythona do obliczania odległości i podobieństw łańcuchów
-Name:		python-%{pname}
-Version:	0.10
-Release:	5
-License:	GPL
+Name:		python-%{module}
+Version:	0.12.0
+Release:	1
+License:	GPL v2
 Group:		Libraries/Python
-Source0:	http://trific.ath.cx/Ftp//python/levenshtein/python-Levenshtein-%{version}.tar.bz2
-# Source0-md5:	88d39338fc75090da78adf43785c71b4
-URL:		http://trific.ath.cx/resources/python/levenshtein/
-BuildRequires:	rpmbuild(macros) >= 1.710
+Source0:	https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+# Source0-md5:	e8cde197d6d304bbdc3adae66fec99fb
+URL:		https://github.com/ztane/python-Levenshtein/
 BuildRequires:	python-devel >= 1:2.3.0
 BuildRequires:	python-modules
 BuildRequires:	rpm-pythonprov
-%pyrequires_eq	python-modules
+BuildRequires:	rpmbuild(macros) >= 1.714
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -37,14 +38,17 @@ odpowiadających mu funkcji bibliotecznych i metod Pythona.
 %install
 rm -rf $RPM_BUILD_ROOT
 %py_install
+%py_postclean
+
+%{__rm} $RPM_BUILD_ROOT%{py_sitedir}/%{module}/_levenshtein.[ch]
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc NEWS README
-%attr(755,root,root) %{py_sitedir}/%{pname}.so
-%if "%{py_ver}" > "2.4"
-%{py_sitedir}/python_Levenshtein-*.egg-info
-%endif
+%doc README.rst NEWS HISTORY.txt
+%dir %{py_sitedir}/%{module}
+%{py_sitedir}/%{module}/*.py[co]
+%attr(755,root,root) %{py_sitedir}/%{module}/_levenshtein.so
+%{py_sitedir}/%{egg_name}-%{version}-py*.egg-info
