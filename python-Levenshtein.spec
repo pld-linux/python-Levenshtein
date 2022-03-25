@@ -10,7 +10,7 @@ Summary:	Python extension computing string distances and similarities
 Summary(pl.UTF-8):	Rozszerzenie Pythona do obliczania odległości i podobieństw łańcuchów
 Name:		python-%{module}
 Version:	0.12.0
-Release:	5
+Release:	6
 License:	GPL v2
 Group:		Libraries/Python
 Source0:	https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
