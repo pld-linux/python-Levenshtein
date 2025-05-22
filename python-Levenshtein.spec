@@ -1,8 +1,3 @@
-#
-# Conditional build:
-%bcond_without	python2 # CPython 2.x module
-%bcond_without	python3 # CPython 3.x module
-
 %define 	module		Levenshtein
 %define 	egg_name	python_Levenshtein
 %define		pypi_name	python-Levenshtein
@@ -10,20 +5,14 @@ Summary:	Python extension computing string distances and similarities
 Summary(pl.UTF-8):	Rozszerzenie Pythona do obliczania odległości i podobieństw łańcuchów
 Name:		python-%{module}
 Version:	0.12.0
-Release:	10
+Release:	11
 License:	GPL v2
 Group:		Libraries/Python
 Source0:	https://files.pythonhosted.org/packages/source/p/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
 # Source0-md5:	e8cde197d6d304bbdc3adae66fec99fb
 URL:		https://github.com/ztane/python-Levenshtein/
-%if %{with python2}
 BuildRequires:	python-devel >= 1:2.3.0
 BuildRequires:	python-modules
-%endif
-%if %{with python3}
-BuildRequires:	python3-devel >= 1:2.3.0
-BuildRequires:	python3-modules
-%endif
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -61,34 +50,19 @@ odpowiadających mu funkcji bibliotecznych i metod Pythona.
 %setup -q
 
 %build
-%if %{with python2}
 %py_build
-%endif
-
-%if %{with python3}
-%py3_build
-%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%if %{with python2}
 %py_install
 %py_postclean
 
 %{__rm} $RPM_BUILD_ROOT%{py_sitedir}/%{module}/_levenshtein.[ch]
-%endif
-
-%if %{with python3}
-%py3_install
-
-%{__rm} $RPM_BUILD_ROOT%{py3_sitedir}/%{module}/_levenshtein.[ch]
-%endif
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%if %{with python2}
 %files
 %defattr(644,root,root,755)
 %doc README.rst NEWS HISTORY.txt
@@ -96,16 +70,3 @@ rm -rf $RPM_BUILD_ROOT
 %{py_sitedir}/%{module}/*.py[co]
 %attr(755,root,root) %{py_sitedir}/%{module}/_levenshtein.so
 %{py_sitedir}/%{egg_name}-%{version}-py*.egg-info
-%endif
-
-%if %{with python3}
-%files -n python3-%{module}
-%defattr(644,root,root,755)
-%doc README.rst NEWS HISTORY.txt
-%dir %{py3_sitedir}/%{module}
-%{py3_sitedir}/%{module}/*.py
-%dir %{py3_sitedir}/%{module}/__pycache__
-%{py3_sitedir}/%{module}/__pycache__/*.py[co]
-%attr(755,root,root) %{py3_sitedir}/%{module}/_levenshtein.cpython-*so
-%{py3_sitedir}/%{egg_name}-%{version}-py*.egg-info
-%endif
